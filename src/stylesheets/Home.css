@@ -1,0 +1,219 @@
+.title {
+    text-align: center;
+    align-items: top;
+}
+
+.mid-element {
+    text-align: center;
+}
+
+.text-input {
+    width: 15%;
+    height: 75;
+    resize: none;
+}
+
+.button {
+    border-radius: 2px;
+    position: absolute;
+    height: 30;
+    margin-left: 10px
+}
+
+.dropdownContainer{
+    width: 15%;
+    height: 30;
+    margin-left: 45%;
+}
+
+.full-screen {
+    background-color:rgb(202, 255, 255);
+    display: inline-block;
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    margin: 0%;
+    margin-right: 0%;
+}
+.gist {
+    top: 0;
+    display: inline-block;
+    height: 99.5vh;
+    width:84.85vw;
+    min-width: 84.85vw;
+    margin: 0%;
+    margin-left: 15%;
+}
+
+.doc {
+    position: relative;
+    display:initial;
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    left: 160px
+}
+
+.full-height {
+    min-height: 100%;
+    height: 100%;
+}
+
+.scores{
+    position:absolute;
+    margin-left: 50%;
+    margin-bottom: 50%;
+    background-color: deepskyblue;
+}
+
+.dropdown {
+    width: 200;
+}
+
+.dateContainer {
+    height:87.6%;
+    width: 38%;
+    background-color:dodgerblue;
+    flex-direction: column;
+    position: absolute;
+    margin-left: 62%;
+}
+
+.dateElement {
+    padding: 10;
+    padding-left: 20;
+}
+
+.dateTitle {
+    margin-left: 10%;
+}
+
+.hiddenPieChart {
+    visibility: hidden;
+    position: absolute;
+}
+
+.visiblePieChart {
+    width: 20%;
+    margin-left: 15%;
+    margin-top: 10%;
+    height: 20%;
+    visibility: visible;
+    position: absolute;
+}
+
+.bar {
+    position:absolute;
+    visibility: visible;
+    width: 400;
+    height: 30;
+    fill:#ff0000;
+    stroke-width:5;
+    stroke:rgb(0,0,0);
+}
+
+.barCharContainer
+{
+    float:left;
+}
+
+.hiddenDivBarChar{
+    background-color:#caffff;
+}
+
+.visibleDivBarChar{
+    background-color:deepskyblue;
+}
+
+.labels {
+    margin: 5;
+    font-weight:700
+}
+
+.svgClass {
+    visibility:hidden;
+    display:block; 
+    width:400;
+    height:25;
+    stroke-width:1;
+    stroke:"rgb(0,0,0)";
+    align-items: center;
+}
+
+.rectClass {
+    margin-top: 20%;
+    height:18;
+    fill:#26964b;
+    stroke-width:1;
+    stroke:rgb(0,0,0); 
+}
+
+.resultsContainer{
+    position: absolute;
+    margin-left: 15%;
+    display:table;
+    content:"";
+    clear: both;
+}
+
+.twitterSearchInput{
+    width: 300;
+}
+
+.resultsTitle{
+    display:table-header-group;
+    vertical-align:top;
+}
+
+.tweetsTitle{
+    text-align: center;
+}
+
+.tweetsContainer{
+    background-color:whitesmoke;
+    align-items: center;
+    text-align: center;
+    max-height: 79.6%;
+    overflow-y: scroll;
+}
+
+.tweetDiv{
+    background-color: deepskyblue;
+    padding: 1;
+    border-style: solid;
+    height: auto;
+}
+
+.hiddenPopUp{
+    display:grid;
+    border-style: solid;
+    border-width: 20px;
+    border: black;
+    background-color: white;
+    position: absolute;
+    align-items: center;
+    text-align: center;
+    visibility: hidden;
+    margin-left: 50%;
+}
+
+.visiblePopUp{
+    display:grid;
+    border-style: solid;
+    border-width: 20px;
+    border: black;
+    background-color: white;
+    position: absolute;
+    align-items: center;
+    text-align: center;
+    visibility: visible;
+    margin-left: 50%;
+}
+
+.popUpButton{
+    background-color:rgb(21, 206, 76);
+}
+
+.graphicClass{
+    margin-left:15vw;
+}
