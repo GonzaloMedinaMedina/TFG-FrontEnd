@@ -1,0 +1,218 @@
+.datesContainer
+{
+    position: relative;
+    width: 100%;
+    margin-left: 0%;
+    height: 5%;
+    border-radius: 1%;
+    display: -webkit-inline-box;
+}
+
+.twitterInputCntainer
+{
+    padding: 10;
+    padding-left: 20;
+    height: 5%;
+}
+
+.twitterContainer {
+    border-top-left-radius: 5%;
+    float: right;
+    margin-right: 0%;
+    height:100%;
+    width: 100%;
+    background-color:#060b26;
+    flex-direction: column;
+    position: relative;
+
+}
+
+.twitterSearchInput{
+    width: 50%;
+    height: 50%;
+}
+
+.proccessButtonTwitter {
+    border-radius: 2px;
+    position: relative;
+    height: 50%;
+    margin-left: 10px
+}
+
+.mainMidContainer{
+    height: 85%;
+    display: block;
+    position: relative;
+}
+
+.headerContainer{
+    height: 15%;
+    position: relative;
+    display: grid;
+}
+
+.columnItems
+{
+    text-align: center;
+    width: auto;
+    display: -webkit-inline-box;
+    position: relative;
+}
+
+.proccessButtonBasicDemo
+{
+    width: 15%;
+    height: 30%;
+    margin-top: 10%;
+    margin-left: 25%;
+    position: relative;
+}
+
+.demoContainer
+{
+    float: right;
+    width: 35%;
+    position: relative;
+    height: 100%;
+}
+
+.dropdownLabel
+{
+    font-weight: 700;
+    margin-left: 10%;
+    width: 50%;
+    text-align: center;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.dropdownTitle
+{
+    font-size: 150%;
+    text-align: center;
+}
+
+.dropdownElement
+{
+    width: 100%;
+    position: relative;
+}
+
+.twitterHeader
+{
+    width: 100%;
+    display: inline-flex;
+}
+
+.twittericon
+{
+    width: auto;
+    height: auto;
+}
+
+.twitterParameters
+{
+    background-color:steelblue;
+}
+
+.inputTwitterParameter
+{
+    margin-right: 50%;
+    width: 20%;
+}
+
+.borderBotRadius
+{
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+}
+
+.vertical
+{
+    height: 100%;
+    width: 5%;
+}
+
+.horizontal
+{
+    width: 100%;
+    border-top: 6px solid #060b26;
+}
+
+.divider{
+    color: #060b26;
+    border-left: 6px solid #060b26;
+    float: right;
+}
+
+.chartClass{
+    position: relative;
+    margin-left: 7%;
+    padding-top: 1%;
+    width: 90%;
+    height: 60%;
+}
+
+.dropdownElementsContainer
+{
+    display: inline-flex;
+    width: auto;
+}
+
+.dataResults
+{
+    border-radius: 2%;
+    margin-top: 1%;
+    padding-top: 1%;
+    margin-left: 7%;
+    background-color:steelblue;
+    height: 30%;
+    width: 90%;
+}
+
+.popUp
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #80808080;
+    transition: all 0.5 linear;
+    -webkit-transition:linear;
+    -moz-transition:linear;
+    -o-transition:linear;
+}
+
+.popUpinnerDiv
+{
+    border-radius: 2%;
+    position: absolute;
+    opacity: 100%;
+    background-color:whitesmoke;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 15%;
+    height: 20%;
+    width: 30%;
+    margin-left: 30%;
+}
+
+.popUpTitle
+{
+    margin-top: 0%;
+    font-size:large;
+}
+
+.popUpButton
+{
+    height: 15%;
+    width: 15%;
+    background-color:yellowgreen;
+}
+
+.inlineFlex
+{
+    display: -webkit-inline-flex;
+}

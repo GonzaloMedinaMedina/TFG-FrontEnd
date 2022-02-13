@@ -26,7 +26,10 @@
   }
   
   .nav-menu.active {
+    display: inline-block;
+    position: relative;
     left: 0;
+    width: 15%;
   }
   
   .nav-text {
@@ -58,6 +61,12 @@
   .nav-menu-items {
     width: auto;
   }
+
+  .nav-menu-items li:hover > ul {
+    background-color: #060b26;
+    position: absolute;
+    display:list-item;
+  }
   
   .navbar-toggle {
     background-color: #060b26;
@@ -72,4 +81,22 @@
     margin-left: 16px;
   }
 
-  
+  .sub-menu{ 
+    background-color: #060b26;
+    z-index: 1;
+    margin-left: 50%;
+    display:none;
+    position:absolute;
+  }
+
+.nav-text li:hover > ul {
+  background-color: #060b26;
+  display: block;
+}
+
+.sub-menuItem{
+  z-index: 1;
+  background-color: #060b26;
+  margin-left: 100%;
+  width: 100%;
+}

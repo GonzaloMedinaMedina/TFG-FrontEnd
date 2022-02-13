@@ -1,93 +1,211 @@
 import {CanvasJSChart} from 'canvasjs-react-charts'
 import React from 'react';
-import { FaLaptopHouse } from 'react-icons/fa';
-
+import '../stylesheets/Chart.css';
 
 class Chart extends React.Component
 {
     constructor(props) {
 	    super(props);
 
-		this.visible = props.visible;
-		this.text = props.text;
-		this.updateChartVisibility = this.updateChartVisibility.bind(this);
-
 		this.dataPoints = [];
-    	this.options = 
+		this.scores = props.state.scores;
+		this.legends = props.state.format;
+		this.title = props.state.title;
+		this.numberOfLines = undefined;
+		this.options = undefined;
+		this.statisticsContainer = undefined;
+						
+		this.statisticsContainer = [];
+
+		if ( props.state.moreThanOneTweet)
 		{
-			width: (window.screen.width * 0.47),
-			theme: "light2",
-			title: {
-				text: this.text
-			},
-			axisY: {
-				title: "Price in USD",
-				prefix: "$"
-			},
-			data: [{
-				type: "line",
-				xValueFormatString: "MMM YYYY",
-				yValueFormatString: "$#,##0.00",
-				dataPoints: this.dataPoints
-			}]
-		}		
+			var numberOfTweets = 0;
+			for (var i = 0; i < this.legends.length; i++)
+			{
+				var format = this.legends[i],
+					count = 0;
+
+				for (var j = 0; j < this.scores.length; j++)
+				{
+					count += this.scores[j].scores.counts[i]
+				}
+				
+				numberOfTweets += count;
+				this.statisticsContainer.push(<p className='text paragraph'>{format + ": " + count}</p>)
+			}			
+
+			this.statisticsContainer.push(<p className='text paragraph'>{"Tweets evaluated: " + numberOfTweets}</p>)
+		}
+		else
+		{
+			this.statisticsContainer.push(<p className='text paragraph'>{"Text evaluated: " + props.state.textEvaluated}</p>)
+
+		}
+
+		this.prepareData(props.state);		
     }
 
-	updateChartVisibility(e) 
+	getColor(labelName)
 	{
-		this.props.updateChartVisibility(e.target.value);
+		switch(labelName)
+		{
+			case 'neutral':
+				return 'orange'
+			case 'positive':
+				return 'green'
+			case 'negative':
+				return 'red'
+		}
 	}
 
-    render() {
-        return <div visible='hidden'>
-			<CanvasJSChart
-			  visible = {false} 
-              options = {this.options} 
-              onRef={ref => this.chart = ref}
-        		/>
-			</div>;
-    }
-
-    componentDidMount(){
-		var me = this,
-        chart = this.chart;
-
-		fetch('https://canvasjs.com/data/gallery/react/nifty-stock-price.json')
-		.then(function(response) {
-			return response.json();
-		})
-		.then(function(data) {
-			for (var i = 0; i < data.length; i++) {
-				me.dataPoints.push({
-					x: new Date(data[i].x),
-					y: data[i].y
+	prepareColumnChart(props)
+	{
+		for(var i = 0; i < this.scores.length; i++)
+		{
+			this.dataPoints.push(
+				{
+					label: this.legends[i],
+					y: parseFloat(this.scores[i].score)
 				});
-			}
-			chart.render();
-		});
+		}
+
+		this.options = 
+		{
+			title: 
+			{
+				text: this.title
+			},
+			data: 
+			[
+				{
+					type: "column",
+					dataPoints: this.dataPoints
+				}
+			]
+		}
 	}
 
 	
-	componentDidUpdate(props)
+	prepareXYChart(props)
+	{
+		this.numberOfLines = props.format.length;
+		this.options = 
+		{
+			theme: "light2",
+			title: {
+				text: this.title
+			},
+			axisY: {
+				title: "number of tweets"
+			},
+			axisX: {
+				title: "date"
+			},
+			data:[]
+		}
+		
+		var me = this,
+		newDatas = [];
+		
+		for (var j = 0; j < this.numberOfLines; j++)
+		{			
+			newDatas.push([]);
+
+			for (var i = 0; i < me.scores.length; i++)
+			{
+				newDatas[j].push(
+					{
+						x: new Date(me.scores[i].date),
+						y: parseFloat(me.scores[i].scores.counts[j])
+					});
+			}
+		}
+
+		for (var j = 0; j < this.numberOfLines; j++)
+		{
+			me.options.data.push({
+				showInLegend: true, 
+				legendText: this.legends[j],
+				type: "line",
+				//xValueFormatString: "DD MMM",
+				//yValueFormatString: this.numberOfTweets,
+				dataPoints: newDatas[j],
+				color: this.getColor(this.legends[j])
+			})
+		}
+	}
+
+	prepareData(props)
+	{
+		var me = this;
+
+		switch(props.type)
+		{
+			case 'column':
+				me.prepareColumnChart(props);
+				break;
+			case 'line':
+				me.prepareXYChart(props);
+				break;
+		}
+	}
+	
+	/*componentDidMount()
 	{
 		var me = this,
-		chart = this.chart;
-		me.options.title.text = props.text;
+		newDatas = [];
 
-		fetch('https://canvasjs.com/data/gallery/react/nifty-stock-price.json')
-		.then(function(response) {
-			return response.json();
-		})
-		.then(function(data) {
-			for (var i = 0; i < 5; i++) {
-				me.dataPoints.push({
-					x: new Date(data[i].x),
-					y: data[i].y
-				});
+		for (var i = 0; i < this.numberOfLines; i++)
+		{
+			newDatas.push([]);
+		}
+		
+		for (var i = 0; i < me.scores.length; i++)
+		{
+			for (var j = 0; j < this.numberOfLines; j++)
+			{
+				newDatas[j].push(
+					{
+						x: new Date(me.scores[i].date),
+						y: parseFloat(me.scores[i].scores[j])
+					});
 			}
-			chart.render();
-		});
-	}
+		}
+
+		for (var j = 0; j < this.numberOfLines; j++)
+		{
+			me.options.data.push({
+				showInLegend: true, 
+				legendText: this.legends[j],
+				type: "line",
+				xValueFormatString: "DD MMM",
+				yValueFormatString: "0.##",
+				dataPoints: newDatas[j]
+			})
+		}
+		
+		var chart = this.chart;
+		chart.render();
+	}*/
+
+    render() 
+	{		
+        return (
+		<>
+			{<div id='graphicClass' className='graphicClass'>
+				<div className='chartClass'>
+					<CanvasJSChart
+						options = {this.options} 
+						onRef = {ref => this.chart = ref}
+					></CanvasJSChart>
+				</div>
+				<div className='dataResults'>
+					{this.statisticsContainer}
+				</div>
+			</div>}
+		</>
+		);
+    }
 }
 
 export default Chart;
