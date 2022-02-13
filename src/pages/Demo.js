@@ -139,7 +139,7 @@ class Demo extends React.Component
     var state = { state :
       {
         textEvaluated: textEvaluated == null ? '' : textEvaluated,
-        title: isTwitterDemo ? Demo.GetModel() : document.getElementById('dropDownList').value,
+        title: isTwitterDemo ? me.GetModel() : document.getElementById('dropDownList').value,
         scores: arrayScores,
         height: document.getElementById('resultsContainer').getAttribute('height'),
         format: currentFormat,

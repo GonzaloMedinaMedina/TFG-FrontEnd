@@ -148,45 +148,7 @@ class Chart extends React.Component
 				me.prepareXYChart(props);
 				break;
 		}
-	}
-	
-	/*componentDidMount()
-	{
-		var me = this,
-		newDatas = [];
-
-		for (var i = 0; i < this.numberOfLines; i++)
-		{
-			newDatas.push([]);
-		}
-		
-		for (var i = 0; i < me.scores.length; i++)
-		{
-			for (var j = 0; j < this.numberOfLines; j++)
-			{
-				newDatas[j].push(
-					{
-						x: new Date(me.scores[i].date),
-						y: parseFloat(me.scores[i].scores[j])
-					});
-			}
-		}
-
-		for (var j = 0; j < this.numberOfLines; j++)
-		{
-			me.options.data.push({
-				showInLegend: true, 
-				legendText: this.legends[j],
-				type: "line",
-				xValueFormatString: "DD MMM",
-				yValueFormatString: "0.##",
-				dataPoints: newDatas[j]
-			})
-		}
-		
-		var chart = this.chart;
-		chart.render();
-	}*/
+	}	
 
     render() 
 	{		
