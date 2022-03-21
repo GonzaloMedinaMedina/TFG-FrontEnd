@@ -10,7 +10,6 @@ class TwitterDemo extends React.Component
     {
         super(props);
 
-        this.countries = [];
         this.demoPage = new Demo();
         this.element = undefined;
         this.tabs = undefined;
@@ -19,13 +18,13 @@ class TwitterDemo extends React.Component
         this.tweetsInfo = [];      
     }
 
-    async callTwitterEndPoint(text, dateFrom, dateTo, numberOfTweets, language, country)
+    async callTwitterEndPoint(text, dateFrom, dateTo, numberOfTweets, language)
     {
         var me = this,
             success = true,
             model = me.demoPage.GetModel();
 
-        await fetch(`http://localhost:5000/SearchTweets/?twitterContent=${text}&dateFrom=${dateFrom}&dateTo=${dateTo}&numberOfTweets=${numberOfTweets}&language=${language}&country=${country}&model=${model}`, 
+        await fetch(`http://localhost:5000/SearchTweets/?twitterContent=${text}&dateFrom=${dateFrom}&dateTo=${dateTo}&numberOfTweets=${numberOfTweets}&language=${language}&model=${model}`, 
         {
             method: 'GET'
         })
@@ -63,6 +62,31 @@ class TwitterDemo extends React.Component
         return success;
     }
 
+    checkTwitterParameters(dateFrom, dateTo, numberOfTweets)
+    {
+        var errorMessages = [],
+            numberOfTweetsNotInteger =  (numberOfTweets === ""  || Number.isInteger(numberOfTweets)),
+            previusDateTo = dateFrom > dateTo;
+
+
+        if (previusDateTo || dateFrom === "" || dateTo === "")
+        {
+            errorMessages.push( (previusDateTo ? "Date from must be a date before Date to" : "Please select dates") )
+        }
+
+        if (numberOfTweets > 100 || numberOfTweets < 10 || numberOfTweetsNotInteger)
+        {
+            errorMessages.push(("Number of tweets must be a number between 10 and 100"))
+        }
+
+        if (document.getElementById('twitterTextArea').value === '')
+        {
+            errorMessages.push('Please type hastag, user or keyword to search');
+        }
+
+        return errorMessages;
+    }
+
     async proccessTwitterApi()
     {
         var me = this,
@@ -71,19 +95,10 @@ class TwitterDemo extends React.Component
             dateTo = document.getElementById('dateTo').value,
             numberOfTweets = document.getElementById('numberOfTweetsInput').value,
             language = document.getElementById('languageDropDownList').value,
-            country = document.getElementById('country').value,
             errorMessages = [];
 
-        if (dateFrom > dateTo || dateFrom === "" || dateTo === "")
-        {
-            errorMessages.push( (dateFrom > dateTo ? "Date from must be a date before date to" : "Please select dates") )
-        }
+        errorMessages = me.checkTwitterParameters(dateFrom, dateTo, numberOfTweets);
 
-        if (numberOfTweets > 100 || numberOfTweets < 0 || numberOfTweets === "")
-        {
-            errorMessages.push( (numberOfTweets === "" ? "Please, enter a number of tweets to proccess" : "Number of tweets must be between 1 and 100") )
-        }
-      
         if (errorMessages.length > 0)
         {
             App.showPopUpMessage(errorMessages);
@@ -101,7 +116,7 @@ class TwitterDemo extends React.Component
 
             if (text !== undefined && text.length > 0)
             {   
-                if(!await me.callTwitterEndPoint(text, dateFrom, dateTo, numberOfTweets, language, country))
+                if(!await me.callTwitterEndPoint(text, dateFrom, dateTo, numberOfTweets, language))
                 {
                     return false;
                 }
@@ -158,6 +173,8 @@ class TwitterDemo extends React.Component
 				return 'limegreen'
 			case 'negative':
 				return 'crimson'
+            default:
+                return 'gray'
 		}
     }
 
@@ -253,17 +270,10 @@ class TwitterDemo extends React.Component
 
                 </div>
 
-                <div className='twitterParameterContainer'>
-                    <div className='inlineFlex'>
-                        <label className='text labels'>Country</label>
-                        <p className='text labels'><a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO codes</a></p>
-                    </div>
-                    <input className='inputTwitterParameter' id='country'></input>
-                </div>
 
                 <div className='twitterParameterContainer'>
 
-                    <label className='text labels'>Nº of tweets</label>
+                    <label className='text labels'>Number of tweets</label>
                     <input className='inputTwitterParameter' id='numberOfTweetsInput'></input>
 
                 </div>
@@ -281,7 +291,7 @@ class TwitterDemo extends React.Component
             </div>
         </div>
         return(
-            this.demoPage.render(this.element)
+            this.demoPage.render(this.element, 'TWITTER')
         );
     }
 }

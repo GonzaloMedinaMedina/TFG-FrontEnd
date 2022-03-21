@@ -11,8 +11,8 @@ class BasicDemo extends React.Component
         this.element =             
           <div className='basicDemo' id='midContainer'>
               
-              <textarea className='text-input' id='textareaId' placeholder='Type text to evaluate'></textarea>   
-              <button className='proccessButtonBasicDemo' onClick={() => {this.onClickProccessButton(this)}}>Proccess</button>
+              <textarea className='text-input centerElement' id='textareaId' placeholder='Type text to evaluate'></textarea>   
+              <button className='proccessButtonBasicDemo centerElement' onClick={() => {this.onClickProccessButton(this)}}>Proccess</button>
             
           </div>
         
@@ -79,7 +79,7 @@ class BasicDemo extends React.Component
     render()
     {
         return(
-            this.demoPage.render(this.element)
+            this.demoPage.render(this.element, 'BASIC')
         )
     }
 }

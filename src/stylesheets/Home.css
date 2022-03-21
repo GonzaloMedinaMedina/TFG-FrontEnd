@@ -1,3 +1,8 @@
+.centerElement{
+    margin:0 auto;
+    text-align: center;
+}
+
 .title {
     text-align: center;
     align-items: top;
@@ -29,10 +34,15 @@
     margin-left: 10px
 }
 
+.dropdownDiv
+{
+    height: 15%;
+}
+
 .dropdownContainer{
     background-color:#060b26;
     display: grid;  
-    height: 15%;
+    height: 80%;
     position: relative;
     margin-left: 5%;
     width: 15%;

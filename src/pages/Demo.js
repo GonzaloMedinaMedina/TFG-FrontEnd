@@ -90,6 +90,7 @@ class Demo extends React.Component
   constructor(props) {
     super(props);
 
+    this.explanation = undefined;
     this.subMenu = undefined;
     this.chart = undefined;
     this.updateChartVisibility = this.updateChartVisibility.bind(this);
@@ -118,7 +119,7 @@ class Demo extends React.Component
     var modelText = document.getElementById('dropDownList').value;
 
     if (!document.getElementById('dropDownList').selectedOptions[0].outerText.includes('(EN)') &&
-      document.getElementById('languageDropDownList').value != 'en')
+      document.getElementById('languageDropDownList').value !== 'en')
     {
       return [modelText.slice(0,19), 'xlm-', modelText.slice(19)].join('');
     }
@@ -134,7 +135,7 @@ class Demo extends React.Component
   async updateChartVisibility(arrayScores, isTwitterDemo, textEvaluated = null)
   {
     var me = this,
-        currentFormat = (Demo.modelsFormat.find(element => element.id == document.getElementById('dropDownList').value)).format;
+        currentFormat = (Demo.modelsFormat.find(element => element.id === document.getElementById('dropDownList').value)).format;
 
     var state = { state :
       {
@@ -188,9 +189,9 @@ class Demo extends React.Component
 
   updateStatistics(json)
   {
-    if(this.statistics.length == 0)
+    if(this.statistics.length === 0)
     {
-      var formats = (Demo.modelsFormat.find(element => element.id == document.getElementById('dropDownList').value)).format;
+      var formats = (Demo.modelsFormat.find(element => element.id === document.getElementById('dropDownList').value)).format;
       
       for (var i = 0; i< formats.length; i++)
       {
@@ -205,7 +206,7 @@ class Demo extends React.Component
 
     var maxIndex = 0;
 
-    for (var i = 0; i<json[0].length; i++)
+    for (i = 0; i<json[0].length; i++)
     {
       if(json[0][i].score > json[0][maxIndex].score)
       {
@@ -219,8 +220,7 @@ class Demo extends React.Component
   async evaluateTweets(json)
   {
 
-      var model = this.GetModel(),
-        tweets = json.data,
+      var tweets = json.data,
         scores = [],
         tweetContainer = document.getElementById('tweetsContainer'),
         me = this;
@@ -229,13 +229,14 @@ class Demo extends React.Component
       {
         me.updateStatistics(json);
         scores.push(json);
-      
 
         var tweetDiv = document.createElement('div');
         tweetDiv.className = 'tweetDiv';
+        
         var content = document.createElement('p');
         content.innerText = tweets[i].text;
         content.style.color = 'white';
+        
         tweetDiv.appendChild(content);
         tweetContainer.appendChild(tweetDiv);
       }
@@ -243,65 +244,89 @@ class Demo extends React.Component
     return scores;
   }
 
-  /*Not used
-  async getHuggingFaceModels()
-  {
-    const url = 'https://huggingface.co/api/models/?repo_id=cardiffnlp';
-    var modelsAdded = [];
-
-    var dropdown = document.getElementById('dropDownList');
-
-      await fetch(url, {
-            method: 'GET',
-        })
-        .then(function (response)
-        {
-          return response.json();
-        })
-        .then(function (body)
-        {
-          for (var index in body)
-          {
-            if(body[index].modelId.includes('cardiffnlp/twitter-roberta-base') && !modelsAdded.includes(body[index].modelId))
-            {
-              modelsAdded.push(body[index].modelId);          
-            }
-          }
-        });
-        
-    if (dropdown !== null && dropdown.childNodes.length == 0)
-    {
-        modelsAdded.forEach( function (model)
-        {
-          var option = document.createElement('option');
-          option.value = model;
-          option.innerHTML = model;
-          dropdown.appendChild(option);
-        })
-    }
-  }
-*/
-
   getModels()
   {
     var modelsIds = [];
 
     Demo.modelsFormat.forEach(function (model)
     {
-      var text = model.id == 'cardiffnlp/twitter-roberta-base' ? 'base' : model.id.includes('sentiment') ? 'sentiment' : model.id.slice(32) + ' (EN)';
+      var text = model.id === 'cardiffnlp/twitter-roberta-base' ? 'base' : model.id.includes('sentiment') ? 'sentiment' : model.id.slice(32) + ' (EN)';
       modelsIds.push(<option value={model.id}>{text}</option>);
     })
     return modelsIds;
   }
 
-  render(subMenu) {
+  createExplanationContent(subMenuKey)
+  {       
+    var content = undefined;
+
+    switch (subMenuKey)
+    {
+      case 'BASIC':
+        content = 
+        <div>
+          <div className='explanationParagraph'>
+            <p className='explanationText'>1º Select a NLP model </p>
+          </div>
+          <div className='explanationParagraph'>
+            <p className='explanationText'>2º Type text to process in the text box </p>
+          </div>
+          <div className='explanationParagraph'>
+            <p className='explanationText'>3º Click on Proccess button and wait for results</p>
+          </div>
+        </div>
+        break;
+      case 'TWITTER':
+        content =
+        <div>
+          <div className='explanationParagraph'>
+            <p className='explanationText'>1º Select a NLP model </p>
+          </div>
+          <div className='explanationParagraph'>
+            <p className='explanationText'>2º Select dates </p>
+          </div>
+          <div className='explanationParagraph'>
+            <p className='explanationText'>3º Select Language</p>
+          </div>
+          <div className='explanationParagraph'>
+            <p className='explanationText'>4º Type number of tweets to process</p>
+          </div>
+          <div className='explanationParagraph'>
+            <p className='explanationText'>5º Type to search by hashtag, user or keywords</p>
+          </div>
+          <div className='explanationParagraph'>
+            <p className='explanationText'>6º Click on Proccess button and wait for results</p>
+          </div>
+        </div>   
+          break;
+      default:
+          break;
+    }
+
+    return (
+      <div id='explanationDiv' className='explanationContainer centerElement'>
+        <text className='explanationTitle'>How to start</text>
+        {content}
+      </div>
+    );
+  }
+
+
+  render(subMenu, subMenuKey) {
     this.subMenu = subMenu;
+    this.explanation = undefined;
+
+    if (this.chart === undefined && subMenuKey !== undefined)
+    {
+      this.explanation = this.createExplanationContent(subMenuKey);
+    }
 
     return (
 
       <div className='active-page' id='current-page'>
         <h1 className='title'>Demo</h1>
-        <div className='dropdownContainer borderBotRadius'>
+        <div className='dropdownDiv'>
+          <div className='dropdownContainer borderBotRadius'>
             <h1 className='text dropdownTitle'>NLP parameters</h1>
 
             <div className='dropdownElement'>
@@ -312,7 +337,7 @@ class Demo extends React.Component
             </div>           
 
           </div>
-        
+        </div>
         <div id ='mainMidContainer' className='mainMidContainer'>
         
           <div id='demo' className='demoContainer'>
@@ -323,6 +348,7 @@ class Demo extends React.Component
 
             <div>          
               {this.chart}
+              {this.explanation}
             </div>
           
           </div>

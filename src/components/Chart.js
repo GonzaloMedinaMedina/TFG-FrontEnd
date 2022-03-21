@@ -1,6 +1,5 @@
 import {CanvasJSChart} from 'canvasjs-react-charts'
 import React from 'react';
-import '../stylesheets/Chart.css';
 
 class Chart extends React.Component
 {

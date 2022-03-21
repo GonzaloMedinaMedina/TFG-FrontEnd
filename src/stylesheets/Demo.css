@@ -40,9 +40,11 @@
 }
 
 .mainMidContainer{
+    margin-bottom: 0%;
     height: 85%;
     display: block;
     position: relative;
+    width: 100%;
 }
 
 .headerContainer{
@@ -64,7 +66,6 @@
     width: 15%;
     height: 30%;
     margin-top: 10%;
-    margin-left: 25%;
     position: relative;
 }
 
@@ -215,4 +216,38 @@
 .inlineFlex
 {
     display: -webkit-inline-flex;
+}
+
+.explanationContainer
+{
+
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    width: 80%;
+    height: 100%;
+    background-color: gray;
+    margin-bottom: 0%;
+    position: relative;
+}
+
+.explanationTitle
+{
+    position: relative;
+    font-size: 300%;
+    font-weight: 500;
+}
+
+.explanationText
+{
+    margin: 0 auto;
+    margin-left: 5%;
+    text-align: left;
+    position: relative;
+    font-size: 150%;
+    font-weight: 400;
+}
+
+.explanationParagraph{
+    position: relative;
+    padding: 5%;
 }
