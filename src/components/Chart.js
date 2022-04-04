@@ -16,7 +16,7 @@ class Chart extends React.Component
 						
 		this.statisticsContainer = [];
 
-		if ( props.state.moreThanOneTweet)
+		if (props.state.moreThanOneTweet)
 		{
 			var numberOfTweets = 0;
 			for (var i = 0; i < this.legends.length; i++)
@@ -37,8 +37,7 @@ class Chart extends React.Component
 		}
 		else
 		{
-			this.statisticsContainer.push(<p className='text paragraph'>{"Text evaluated: " + props.state.textEvaluated}</p>)
-
+			this.statisticsContainer.push(<p className='text paragraph' font-size='200%'>{"Text evaluated: " + props.state.textEvaluated}</p>)
 		}
 
 		this.prepareData(props.state);		
@@ -126,8 +125,6 @@ class Chart extends React.Component
 				showInLegend: true, 
 				legendText: this.legends[j],
 				type: "line",
-				//xValueFormatString: "DD MMM",
-				//yValueFormatString: this.numberOfTweets,
 				dataPoints: newDatas[j],
 				color: this.getColor(this.legends[j])
 			})

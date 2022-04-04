@@ -27,7 +27,7 @@ export const SidebarData = [
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text'
   },
-  {
+  /*{
     title: 'Preprocessing',
     path: '/preprocessing',
     icon: <IoIcons.IoIosFitness />,
@@ -68,5 +68,5 @@ export const SidebarData = [
     path: '/references',
     icon: <IoIcons.IoMdQuote />,
     cName: 'nav-text'
-  }
+  }*/
 ];

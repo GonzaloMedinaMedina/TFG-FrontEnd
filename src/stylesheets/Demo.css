@@ -220,7 +220,6 @@
 
 .explanationContainer
 {
-
     border-top-left-radius: 5%;
     border-top-right-radius: 5%;
     width: 80%;
@@ -228,18 +227,21 @@
     background-color: gray;
     margin-bottom: 0%;
     position: relative;
+    overflow-y: hidden;
 }
 
 .explanationTitle
 {
+    margin-top: 5%;
+    padding: auto;
     position: relative;
-    font-size: 300%;
+    font-size: 150%;
     font-weight: 500;
 }
 
 .explanationText
 {
-    margin: 0 auto;
+    margin: 1% auto 1% auto;
     margin-left: 5%;
     text-align: left;
     position: relative;
@@ -247,7 +249,24 @@
     font-weight: 400;
 }
 
+.explanationHeaderText
+{
+    margin: 1% auto 1% auto;
+    margin-left: 5%;
+    text-align:center;
+    position: relative;
+    font-size: 150%;
+    font-weight: 500;
+}
+
 .explanationParagraph{
+    margin: auto;
     position: relative;
     padding: 5%;
+}
+
+.explanationContentContainer
+{
+    height: 100%;
+    overflow-y: scroll;
 }

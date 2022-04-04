@@ -2,7 +2,16 @@ import React from 'react';
 import 'react-dropdown/style.css';
 import Chart from '../components/Chart'
 import '../stylesheets/Demo.css';
+import '../stylesheets/Home.css';
 import App from '../App';
+import fotonlpModels from '../images/nlpmodels.jpg';
+import fototext from '../images/texto.jpg';
+import fotobasicDemo from '../images/basicDemo.png';
+import selectDates from '../images/selectDates.PNG';
+import selectLanguage from '../images/selectLanguage.PNG';
+import numberOfTweets from '../images/numberOfTweets.PNG';
+import searchCriteria from '../images/searchCriteria.PNG';
+import twitterDemo from '../images/twitterDemo.PNG';
 
 const tripleFormat = 
   [
@@ -87,6 +96,7 @@ class Demo extends React.Component
       format: tripleFormat
     }
   ]
+
   constructor(props) {
     super(props);
 
@@ -258,57 +268,85 @@ class Demo extends React.Component
 
   createExplanationContent(subMenuKey)
   {       
-    var content = undefined;
-
     switch (subMenuKey)
     {
       case 'BASIC':
-        content = 
-        <div>
-          <div className='explanationParagraph'>
-            <p className='explanationText'>1º Select a NLP model </p>
-          </div>
-          <div className='explanationParagraph'>
-            <p className='explanationText'>2º Type text to process in the text box </p>
-          </div>
-          <div className='explanationParagraph'>
-            <p className='explanationText'>3º Click on Proccess button and wait for results</p>
-          </div>
-        </div>
-        break;
-      case 'TWITTER':
-        content =
-        <div>
-          <div className='explanationParagraph'>
-            <p className='explanationText'>1º Select a NLP model </p>
-          </div>
-          <div className='explanationParagraph'>
-            <p className='explanationText'>2º Select dates </p>
-          </div>
-          <div className='explanationParagraph'>
-            <p className='explanationText'>3º Select Language</p>
-          </div>
-          <div className='explanationParagraph'>
-            <p className='explanationText'>4º Type number of tweets to process</p>
-          </div>
-          <div className='explanationParagraph'>
-            <p className='explanationText'>5º Type to search by hashtag, user or keywords</p>
-          </div>
-          <div className='explanationParagraph'>
-            <p className='explanationText'>6º Click on Proccess button and wait for results</p>
-          </div>
-        </div>   
-          break;
-      default:
-          break;
-    }
+        return( 
+          <div id='explanationDiv' className='explanationContainer centerElement'>
+            
+            <div id='explanationContentContainer' className='explanationContentContainer'>
 
-    return (
-      <div id='explanationDiv' className='explanationContainer centerElement'>
-        <text className='explanationTitle'>How to start</text>
-        {content}
-      </div>
-    );
+              <div className='explanationParagraph'>
+                <text className='explanationTitle'>This demo allow you to analyze text typed using differents Natural Languages Processing models</text>
+              </div>
+              
+              <div className='explanationParagraph'>
+                <p className='explanationText'>1º Select a NLP model</p>
+                <img className='centerElement' src={fotonlpModels} width="auto" height="auto"/>
+              </div>
+
+              <div className='explanationParagraph'>
+                <p className='explanationText'>2º Type text to process in the text box </p>
+                <img className='centerElement' src={fototext} width="auto" height="auto"/>
+              </div>
+
+              <div className='explanationParagraph'>
+                <p className='explanationText'>3º Click on Proccess button and wait for results</p>
+                <img className='centerElement' src={fotobasicDemo} width="100%" height="auto"/>
+              </div>
+
+            </div>
+        </div>
+        );
+      
+      case 'TWITTER':
+        return(
+        <div id='explanationDiv' className='explanationContainer centerElement'>
+
+            <div id='explanationContentContainer' className='explanationContentContainer'>
+              
+              <div className='explanationParagraph'>
+                <text className='explanationTitle'>This demo allow you to analyze analyze batch of tweets between dates and searching by hashtag, user or keyword using differents Natural Languages Processing models</text>
+              </div>
+
+              <div className='explanationParagraph'>
+                <p className='explanationText'>1º Select a NLP model</p>
+                <img className='centerElement' src={fotonlpModels} width="auto" height="auto"/>
+              </div>
+
+              <div className='explanationParagraph'>
+                <p className='explanationText'>2º Select dates</p>
+                <img className='centerElement' src={selectDates} width="auto" height="auto"/>
+              </div>
+              
+              <div className='explanationParagraph'>
+                <p className='explanationText'>3º Select Language</p>
+                <img className='centerElement' src={selectLanguage} width="auto" height="auto"/>
+              </div>
+              
+              <div className='explanationParagraph'>
+                <p className='explanationText'>4º Type number of tweets to process</p>
+                <img className='centerElement' src={numberOfTweets} width="auto" height="auto"/>
+              </div>
+              
+              <div className='explanationParagraph'>
+                <p className='explanationText'>5º Type to search by hashtag, user or keywords</p>
+                <img className='centerElement' src={searchCriteria}  width="auto" height="auto"/>
+              </div>
+              
+              <div className='explanationParagraph'>
+                <p className='explanationText'>6º Click on Proccess button and wait for results</p>
+                <img className='centerElement' src={twitterDemo}  width="100%" height="auto"/>
+              </div>
+
+            </div>
+
+        </div>
+        )
+      
+      default:
+          return <div></div>;
+    }
   }
 
 
@@ -324,8 +362,10 @@ class Demo extends React.Component
     return (
 
       <div className='active-page' id='current-page'>
-        <h1 className='title'>Demo</h1>
+      <h1 className='title'>Demo</h1>
+
         <div className='dropdownDiv'>
+          
           <div className='dropdownContainer borderBotRadius'>
             <h1 className='text dropdownTitle'>NLP parameters</h1>
 
@@ -337,7 +377,9 @@ class Demo extends React.Component
             </div>           
 
           </div>
+        
         </div>
+
         <div id ='mainMidContainer' className='mainMidContainer'>
         
           <div id='demo' className='demoContainer'>

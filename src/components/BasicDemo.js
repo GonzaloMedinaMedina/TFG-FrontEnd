@@ -21,59 +21,63 @@ class BasicDemo extends React.Component
 
     async onClickProccessButton(me)
     {            
-        App.showLoader();
 
         var textToProccess = document.getElementById('textareaId').value,
         model = document.getElementById('dropDownList').value,
         scores = [],
         evaluated = false;
 
-        if (textToProccess.includes('twitter.com'))
+        if (textToProccess != '')
         {
-            var tweetId = textToProccess.substring(textToProccess.search('status') + 7);
+            App.showLoader();
 
-            await fetch(`http://localhost:5000/SingleTweet/?tweetId=${tweetId}&model=${model}`,
+            if (textToProccess.includes('twitter.com'))
             {
-                method: 'GET'
-            })
-            .then( await async function (response)
-            {
-                if (response.ok)
+                var tweetId = textToProccess.substring(textToProccess.search('status') + 7);
+
+                await fetch(`http://localhost:5000/SingleTweet/?tweetId=${tweetId}&model=${model}`,
                 {
-                    await response.json().then( await async function (json)
+                    method: 'GET'
+                })
+                .then( await async function (response)
+                {
+                    if (response.ok)
                     {
-                        textToProccess = json.text;
-                        evaluated=true;
-                        scores = json.score[0];
-                    })
-                }
-            });
-        }
+                        await response.json().then( await async function (json)
+                        {
+                            textToProccess = json.text;
+                            evaluated=true;
+                            scores = json.score[0];
+                        })
+                    }
+                });
+            }
 
-        if (textToProccess != '' && !evaluated)
-        {
-            const url = `http://localhost:5000/evaluateText?text=${textToProccess}/&model=${model}`
-            this.demoPage.clearScreen();
-
-            await fetch(url, {
-                method: "GET",
-            })
-            .then( await async function(response)
+            if (textToProccess != '' && !evaluated)
             {
-                if (response.ok) {
-                    await response.json().then(await async function(json)
-                    {
-                        textToProccess = json.text;
-                        evaluated=true;
-                        scores = json.score[0];
-                    });
-                }
-            });
-        }
+                const url = `http://localhost:5000/evaluateText?text=${textToProccess}/&model=${model}`
+                this.demoPage.clearScreen();
 
-        me.demoPage.CreateElementsWithReponse(scores, false, textToProccess);
-        me.forceUpdate();
-        App.hideLoader();
+                await fetch(url, {
+                    method: "GET",
+                })
+                .then( await async function(response)
+                {
+                    if (response.ok) {
+                        await response.json().then(await async function(json)
+                        {
+                            textToProccess = json.text;
+                            evaluated=true;
+                            scores = json.score[0];
+                        });
+                    }
+                });
+            }
+
+            me.demoPage.CreateElementsWithReponse(scores, false, textToProccess.substring(0, textToProccess.length - 1));
+            me.forceUpdate();
+            App.hideLoader();
+        }      
     }
 
     render()
