@@ -42,10 +42,11 @@
 .dropdownContainer{
     background-color:#060b26;
     display: grid;  
-    height: 80%;
+    height: fit-content;
     position: relative;
+    padding: 1%;
     margin-left: 5%;
-    width: 15%;
+    width: fit-content;
 }
 
 .full-screen {
