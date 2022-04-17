@@ -29,7 +29,7 @@
     display: inline-block;
     position: relative;
     left: 0;
-    width: 15%;
+    width: auto;
   }
   
   .nav-text {
