@@ -1,6 +1,6 @@
 import React from 'react';
-import Demo from '../pages/Demo';
-import App from '../App';
+import Demo from '../../pages/Demo/Demo';
+import App from '../../App';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css'
 
@@ -200,7 +200,7 @@ class TwitterDemo extends React.Component
 
             tabTitles.push(<Tab>{tweetInfo.date}</Tab>)
             tabContents.push(
-            <TabPanel><div lassName='tweetsContainer'>
+            <TabPanel><div className='tweetsContainer'>
                     {content}
                 </div>
             </TabPanel>)
@@ -226,64 +226,60 @@ class TwitterDemo extends React.Component
 
         this.element =  
         
-        <div id='twitterContainer' className='twitterContainer borderTopRadius'>
+        <div id='twitterContainer' className='twitterContainer'>
 
             <h1 className='text twitterTitle'>Twitter</h1>
 
             <div className='twitterParameters'>
                 
-                <div className='datesContainer'>
+                <div className='pairParametersContainer'>
 
-                    <div className='twitterParameterContainer'>      
-                
-                        <label className='text labels' for="dateFrom">Date From:</label>
-                        <input type="date" id="dateFrom" name="dateFrom" min={mindate} max={maxdate}></input>
-                
+                    <div className='twitterParameterContainer'>                     
+                        <label className='text labels' for="dateFrom">Date From</label>
+                        <input className='inputClass' type="date" id="dateFrom" name="dateFrom" min={mindate} max={maxdate}></input>                
                     </div>
+
+                    <div className='twitterParameterContainer'>                
+                        <label className='text labels' for="dateTo">Date To</label>
+                        <input className='inputClass' type="date" id="dateTo" name="dateTo" min={mindate} max={maxdate}></input>                
+                    </div>
+
+                </div>
+
+                <div className='pairParametersContainer'>
 
                     <div className='twitterParameterContainer'>
-                
-                        <label className='text labels' for="dateTo">To:</label>
-                        <input type="date" id="dateTo" name="dateTo" min={mindate} max={maxdate}></input>
-                
+                        <label className='text labels'>Language</label>
+                        <select name="models" id="languageDropDownList" className='twitterDropdown inputClass' onChange=
+                        {
+                            () => 
+                                {
+                                if(!Demo.checkCrossModel())
+                                {
+                                        document.getElementById('languageDropDownList').value = 'en';
+                                }
+                                }
+                        }>
+                            <option value='en'>English</option>
+                            <option value='es'>Spanish</option>
+                            <option value='fr'>French</option>
+                        </select>
+
                     </div>
 
-                </div>
 
-                <div className='twitterParameterContainer'>
-
-                    <label className='text labels'>Language</label>
-                     <select name="models" id="languageDropDownList" className='twitterDropdown' onChange=
-                     {
-                         () => 
-                            {
-                               if(!Demo.checkCrossModel())
-                               {
-                                    document.getElementById('languageDropDownList').value = 'en';
-                               }
-                            }
-                    }>
-                        <option value='en'>English</option>
-                        <option value='es'>Spanish</option>
-                        <option value='fr'>French</option>
-                    </select>
-
-                </div>
-
-
-                <div className='twitterParameterContainer'>
-
-                    <label className='text labels'>Number of tweets</label>
-                    <input className='inputTwitterParameter' id='numberOfTweetsInput'></input>
-
-                </div>
-            
-                <div className='twitterInputCntainer'>
-        
-                    <input className='twitterSearchInput' id='twitterTextArea' type='text-input' placeholder='Search tweets by hashtag, user or id'></input>
-                    <button className='proccessButtonTwitter' onClick={() => {this.onClickTwitter()}}>Proccess</button>
+                    <div className='twitterParameterContainer'>
+                        <label className='text labels'>Number of tweets</label>
+                        <input className='inputTwitterParameter inputClass' id='numberOfTweetsInput'></input>
+                    </div>
             
                 </div>
+                <div className='twitterParameterContainer'>       
+                    <label className='text labels'>Search Criteria</label>
+                    <input className='inputClass' id='twitterTextArea' type='text-input' placeholder='Search tweets by hashtag, user or id'></input>            
+                </div>
+
+                <button className='proccessButton inputClass' onClick={() => {this.onClickTwitter()}}>Proccess</button>
             </div>
 
             <div className='tweetsContainer' id='tweetsContainer'>

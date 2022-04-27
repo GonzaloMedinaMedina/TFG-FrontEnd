@@ -1,3 +1,15 @@
+html {
+  font-size: clamp(16px, 1rem + 2vw, 24px);
+}
+
+h1,h2,h3,h4,h5 {
+  color:rgb(52, 71, 103)
+}
+
+p {
+  color: black;
+}
+
 .App {
   text-align: center;
 }
@@ -20,7 +32,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
@@ -38,10 +49,6 @@
 }
 
 
-.body {
-  width: 20%;
-}
-
 .loader,
 .loader:before,
 .loader:after {
@@ -53,17 +60,16 @@
   height: 4em;
 }
 .loader {
-  margin-left: 40%;
-  margin-top: 20%;
+
   color: #030eaa;
   text-indent: -9999em;
-  position: absolute;
   font-size: 11px;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
+  margin: 50vh 50vw;
 }
 .loader:before,
 .loader:after {

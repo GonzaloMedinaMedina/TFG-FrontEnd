@@ -1,15 +1,15 @@
 import './stylesheets/App.css';
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Demo from './pages/Demo';
-import Documentation from './pages/Documentation';
-import GettingData from './pages/GettingData';
-import TwitterDemo from './components/TwitterDemo';
-import BasicDemo from './components/BasicDemo';
-import './stylesheets/Navbar.css';
+import Home from './pages/Home/Home';
+import Documentation from './pages/Documentation/Documentation';
+import GettingData from './pages/GettingData/GettingData';
+import TwitterDemo from './components/TwitterDemo/TwitterDemo';
+import BasicDemo from './components/BasicDemo/BasicDemo';
+import './components/Navbar/Navbar.css';
+import TopNavigator from './components/TopNavigator/TopNavigator';
 
 
 class App extends React.Component
@@ -59,7 +59,7 @@ class App extends React.Component
     popUp.className = 'popUp';
     popUp.appendChild(innerDiv);
     popUp.id = 'popUp';
-    document.getElementById('current-page').appendChild(popUp);
+    document.getElementById('app').appendChild(popUp);
     document.getElementById('nav-menu-items').style.pointerEvents = "none";
 
 }
@@ -83,14 +83,14 @@ class App extends React.Component
     divLoader.appendChild(loader);
     divLoader.id = 'divLoader';
 
-    document.getElementById('current-page').appendChild(divLoader);
+    document.getElementById('app').appendChild(divLoader);
     document.getElementById('nav-menu-items').style.pointerEvents = "none";
   }
 
   static hideLoader()
   {
     document.getElementById('divLoader').remove();
-    document.getElementById('current-page').style.backgroundColor = '#f5f5f5';
+    document.getElementById('app').style.backgroundColor = '#f5f5f5';
     document.getElementById('nav-menu-items').style.pointerEvents = "auto";
   }
 
@@ -107,7 +107,6 @@ class App extends React.Component
         </Navbar>     
           <Switch id='navBarItem'>
             <Route path='/' exact component={Home} />
-            <Route path='/demo' component={Demo} />
             <Route path='/basicDemo' component={BasicDemo} />
             <Route path='/twitterDemo' component={TwitterDemo} />
             <Route path='/documentation' component={Documentation} />
@@ -115,6 +114,7 @@ class App extends React.Component
           </Switch>
         </Router>
     </>
+    <TopNavigator/>
     </div>
   );
 }

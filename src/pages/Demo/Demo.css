@@ -1,11 +1,9 @@
-.datesContainer
+.pairParametersContainer
 {
-    position: relative;
-    width: 100%;
     margin-left: 0%;
-    height: 5%;
     border-radius: 1%;
-    display: -webkit-inline-box;
+    flex-flow: wrap;
+    display: flex;
 }
 
 .twitterInputCntainer
@@ -15,42 +13,17 @@
     height: 5%;
 }
 
-.twitterContainer {
-    border-top-left-radius: 5%;
-    float: right;
+.twitterContainer 
+{
     margin-right: 0%;
-    height:100%;
-    width: 100%;
     background-color:#060b26;
     flex-direction: column;
-    position: relative;
-
+    border-radius: inherit;
 }
 
-.twitterSearchInput{
-    width: 50%;
-    height: 50%;
-}
 
 .proccessButtonTwitter {
     border-radius: 2px;
-    position: relative;
-    height: 50%;
-    margin-left: 10px
-}
-
-.mainMidContainer{
-    margin-bottom: 0%;
-    height: 85%;
-    display: block;
-    position: relative;
-    width: 100%;
-}
-
-.headerContainer{
-    height: 15%;
-    position: relative;
-    display: grid;
 }
 
 .columnItems
@@ -61,20 +34,27 @@
     position: relative;
 }
 
-.proccessButtonBasicDemo
+.proccessButton
 {
-    width: 15%;
-    height: 30%;
-    margin-top: 10%;
-    position: relative;
+    align-self: center;
+    background-image: linear-gradient(310deg, #141727 0%, #3A416F 100%);
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 12px;
+    opacity: .95;
+    margin-right: 20px;
+    box-shadow: 0 5px 10px -3px rgb(0 0 0 / 23%), 0 6px 10px -5px rgb(0 0 0 / 25%);
 }
 
 .demoContainer
 {
-    float: right;
-    width: 35%;
-    position: relative;
-    height: 100%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.13);
+    text-align: center;
+    border-radius: 2%;
 }
 
 .dropdownLabel
@@ -88,13 +68,12 @@
 
 .dropdownTitle
 {
-    font-size: 150%;
     text-align: center;
 }
 
 .dropdownElement
 {
-    width: 100%;
+    display: inline-flex;
     position: relative;
 }
 
@@ -113,18 +92,8 @@
 .twitterParameters
 {
     background-color:steelblue;
-}
-
-.inputTwitterParameter
-{
-    margin-right: 50%;
-    width: 20%;
-}
-
-.borderBotRadius
-{
-    border-bottom-left-radius: 5%;
-    border-bottom-right-radius: 5%;
+    display: flex;
+    border-radius: inherit;
 }
 
 .vertical
@@ -147,10 +116,9 @@
 
 .chartClass{
     position: relative;
-    margin-left: 7%;
+    margin: 0 auto;
     padding-top: 1%;
     width: 90%;
-    height: 60%;
 }
 
 .dropdownElementsContainer
@@ -161,22 +129,19 @@
 
 .dataResults
 {
-    border-radius: 2%;
-    margin-top: 1%;
+    border-radius: 5px;
     padding-top: 1%;
-    margin-left: 7%;
+    margin: 0 auto;
     background-color:steelblue;
-    height: 30%;
-    width: 90%;
+    display: flex;
+    max-width: 90%;
 }
 
 .popUp
 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
     background-color: #80808080;
     transition: all 0.5 linear;
     -webkit-transition:linear;
@@ -203,7 +168,6 @@
 .popUpTitle
 {
     margin-top: 0%;
-    font-size:large;
 }
 
 .popUpButton
@@ -218,24 +182,11 @@
     display: -webkit-inline-flex;
 }
 
-.explanationContainer
-{
-    border-top-left-radius: 5%;
-    border-top-right-radius: 5%;
-    width: 80%;
-    height: 100%;
-    background-color: gray;
-    margin-bottom: 0%;
-    position: relative;
-    overflow-y: hidden;
-}
-
 .explanationTitle
 {
     margin-top: 5%;
     padding: auto;
     position: relative;
-    font-size: 150%;
     font-weight: 500;
 }
 
@@ -245,28 +196,11 @@
     margin-left: 5%;
     text-align: left;
     position: relative;
-    font-size: 150%;
     font-weight: 400;
-}
-
-.explanationHeaderText
-{
-    margin: 1% auto 1% auto;
-    margin-left: 5%;
-    text-align:center;
-    position: relative;
-    font-size: 150%;
-    font-weight: 500;
 }
 
 .explanationParagraph{
     margin: auto;
     position: relative;
     padding: 5%;
-}
-
-.explanationContentContainer
-{
-    height: 100%;
-    overflow-y: scroll;
 }

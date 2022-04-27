@@ -1,0 +1,66 @@
+.basicDemo {}
+
+
+.active-page {
+    background-color:whitesmoke;
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(200%) blur(30px);
+    box-shadow: rgb(0 0 0 / 8%) 0rem 1.25rem 1.6875rem 0rem;
+    overflow-wrap: break-word;
+    background-clip: border-box;
+    border: 0px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.75rem;
+    padding: 0 17px 34px 17px;
+    margin: 50px 17px;
+}
+
+.resultsContainer .explanationContainer {
+  border-radius: 0.75rem;
+  margin: 0 auto 20px auto;
+  max-width: 90%;
+  padding: 50px 30px;
+  background-color: rgb(248, 249, 250);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.13);
+}
+.resultsContainer .explanationContainer .flex-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.step--button {
+  margin: 0 15px;
+  border-radius: 100%;
+  background-image: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
+  width: clamp(80px, 1rem + 2vw, 160px);
+  height: clamp(80px, 1rem + 2vw, 160px);
+  font-size: 1.5em;
+  border: none;
+  color: white;
+}
+
+.resultsContainer .explanationContainer .step .step-container--description > img   {
+  width: 80%;
+  max-width: 100%;
+  height: auto;
+}
+
+.resultsContainer .explanationContainer .step > p{
+  margin: 35px 0;
+  color: rgb(52, 71, 103);
+  font-size: clamp(14px, 1rem + 2vw, 40px);
+}
+
+.resultsContainer .explanationContainer .flex-wrapper .step--button.current {
+  color: white;
+  background-image: linear-gradient(195deg, rgb(10, 17, 58), rgb(26, 115, 232));
+}
+
+@media only screen and (min-width:  992px)
+{
+  .active-page 
+  {
+    margin: 0;
+    padding: 0 0 34px 5px;
+  }
+}
