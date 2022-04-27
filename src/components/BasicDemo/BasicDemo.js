@@ -23,7 +23,7 @@ class BasicDemo extends React.Component {
       scores = [],
       evaluated = false;
 
-    if (textToProccess != '') {
+    if (textToProccess !== '') {
       App.showLoader();
 
       if (textToProccess.includes('twitter.com')) {
@@ -44,7 +44,7 @@ class BasicDemo extends React.Component {
           });
       }
 
-      if (textToProccess != '' && !evaluated) {
+      if (textToProccess !== '' && !evaluated) {
         const url = `http://localhost:5000/evaluateText?text=${textToProccess}/&model=${model}`
         this.demoPage.clearScreen();
 

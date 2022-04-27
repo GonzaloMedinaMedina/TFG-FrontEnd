@@ -53,6 +53,8 @@ class Chart extends React.Component
 				return 'green'
 			case 'negative':
 				return 'red'
+			default:
+				return 'white'
 		}
 	}
 
@@ -119,7 +121,7 @@ class Chart extends React.Component
 			}
 		}
 
-		for (var j = 0; j < this.numberOfLines; j++)
+		for (j = 0; j < this.numberOfLines; j++)
 		{
 			me.options.data.push({
 				showInLegend: true, 
@@ -142,6 +144,8 @@ class Chart extends React.Component
 				break;
 			case 'line':
 				me.prepareXYChart(props);
+				break;
+			default:
 				break;
 		}
 	}	

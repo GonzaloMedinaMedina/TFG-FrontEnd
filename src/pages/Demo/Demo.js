@@ -197,7 +197,7 @@ class Demo extends React.Component {
     var state = {
       state:
       {
-        textEvaluated: textEvaluated == null ? '' : textEvaluated,
+        textEvaluated: textEvaluated === null ? '' : textEvaluated,
         title: isTwitterDemo ? me.GetModel() : document.getElementById('dropDownList').value,
         scores: arrayScores,
         height: document.getElementById('resultsContainer').getAttribute('height'),
@@ -224,7 +224,7 @@ class Demo extends React.Component {
 
     var actualScores = document.getElementById('scoresContainer');
 
-    if (document.getElementById('divBarChar' + 0) != null) {
+    if (document.getElementById('divBarChar' + 0) !== null) {
       for (var i = 0; i < 20; i++) {
         var divBarChar = document.getElementById('divBarChar' + i);
         divBarChar.className = 'hiddenDivBarChar';

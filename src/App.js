@@ -47,7 +47,7 @@ class App extends React.Component
       contentDiv.appendChild(p);
     }
 
-    title.innerText = titleText == '' ? 'Something went wrong' : titleText;
+    title.innerText = titleText === '' ? 'Something went wrong' : titleText;
     title.className = 'popUpTitle';
     titleDiv.appendChild(title);
     innerDiv.appendChild(titleDiv);

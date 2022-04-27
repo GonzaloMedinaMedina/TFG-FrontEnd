@@ -109,7 +109,7 @@ class TwitterDemo extends React.Component
             me.scoreAverage = [];
             me.demoPage.clearScreen();    
 
-            if ( document.getElementById('twitterTextArea') != null)
+            if ( document.getElementById('twitterTextArea') !== null)
             {
                 text = document.getElementById('twitterTextArea').value.replace("#", "%23").replace("@", "%40");
             }
