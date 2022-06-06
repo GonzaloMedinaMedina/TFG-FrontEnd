@@ -40,7 +40,7 @@
 }
 
 .resultsContainer .explanationContainer .step .step-container--description > img   {
-  width: 80%;
+  width: auto;
   max-width: 100%;
   height: auto;
 }

@@ -40,7 +40,7 @@
     position: relative;
     padding: 25px 17px;
     border-radius: 2%;
-    max-width: 60%;
+    max-width: 30%;
     margin: 0 auto;
 }
 .separator.separator--demo {
@@ -48,6 +48,7 @@
   max-width: 25%;
 }
 .full-screen {
+    height: 100%;
     background-color:whitesmoke;
     display: flex;
     flex-direction: column;
@@ -255,7 +256,8 @@
 @media only screen and (min-width:  992px)
 {
     .full-screen 
-    {
+    {    
+        height: 100%;
         background-color:whitesmoke;
         display: flex;
         flex-direction: row;

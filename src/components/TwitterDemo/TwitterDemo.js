@@ -24,14 +24,16 @@ class TwitterDemo extends React.Component
             success = true,
             model = me.demoPage.GetModel();
 
-        await fetch(`http://localhost:5000/SearchTweets/?twitterContent=${text}&dateFrom=${dateFrom}&dateTo=${dateTo}&numberOfTweets=${numberOfTweets}&language=${language}&model=${model}`, 
+        const url = App.serverIP + `SearchTweets/?twitterContent=${text}&dateFrom=${dateFrom}&dateTo=${dateTo}&numberOfTweets=${numberOfTweets}&language=${language}&model=${model}`
+
+        await fetch(url, 
         {
             method: 'GET'
         })
         .then(await async function (response)
         {
-            if (response.ok)
-            {
+           // if (response.ok)
+           // {
 
                 await response.json().then( await async function (json)
                 {
@@ -52,7 +54,7 @@ class TwitterDemo extends React.Component
                         });
                     });
                 });   
-            } 
+           // } 
         })
         .catch((e) =>{
             App.showPopUpMessage(e.message);   
@@ -182,9 +184,10 @@ class TwitterDemo extends React.Component
     {
         var me = this,
             tabTitles = [],
-        tabContents = [];
+            tabContents = [];
 
-        me.tweetsInfo.map((tweetInfo) => {
+        me.tweetsInfo.map((tweetInfo) => 
+        {
 
             var content = []
 
@@ -221,7 +224,7 @@ class TwitterDemo extends React.Component
     render()
     {       
         var today = new Date();
-        var mindate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate() - 7 );
+        var mindate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate() - 7);
         var maxdate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
         this.element =  
@@ -274,12 +277,17 @@ class TwitterDemo extends React.Component
                     </div>
             
                 </div>
-                <div className='twitterParameterContainer'>       
-                    <label className='text labels'>Search Criteria</label>
-                    <input className='inputClass' id='twitterTextArea' type='text-input' placeholder='Search tweets by hashtag, user or id'></input>            
+                <div className='pairParametersContainer'>
+
+                    <div className='twitterParameterContainer'>       
+                        <label className='text labels'>Search Criteria</label>
+                        <input className='inputClass' id='twitterTextArea' type='text-input' placeholder='Search tweets by hashtag, user or id'></input>          
+                    </div>
+                           
+                    <button className='proccessButton inputClass' onClick={() => {this.onClickTwitter()}}>Proccess</button>
+                    
                 </div>
 
-                <button className='proccessButton inputClass' onClick={() => {this.onClickTwitter()}}>Proccess</button>
             </div>
 
             <div className='tweetsContainer' id='tweetsContainer'>

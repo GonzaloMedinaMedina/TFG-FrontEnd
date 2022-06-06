@@ -26,10 +26,12 @@ class BasicDemo extends React.Component {
     if (textToProccess !== '') {
       App.showLoader();
 
-      if (textToProccess.includes('twitter.com')) {
+      if (textToProccess.includes('twitter.com')) 
+      {
         var tweetId = textToProccess.substring(textToProccess.search('status') + 7);
+        const url = App.serverIP + `SingleTweet/?tweetId=${tweetId}&model=${model}`;
 
-        await fetch(`http://localhost:5000/SingleTweet/?tweetId=${tweetId}&model=${model}`,
+        await fetch(url,
           {
             method: 'GET'
           })
@@ -44,12 +46,13 @@ class BasicDemo extends React.Component {
           });
       }
 
-      if (textToProccess !== '' && !evaluated) {
-        const url = `http://localhost:5000/evaluateText?text=${textToProccess}/&model=${model}`
+      if (textToProccess !== '' && !evaluated) 
+      {
+        const url = App.serverIP + `evaluateText?text=${textToProccess}/&model=${model}`;
         this.demoPage.clearScreen();
 
         await fetch(url, {
-          method: "GET",
+          method: 'GET'
         })
           .then(await async function (response) {
             if (response.ok) {

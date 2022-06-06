@@ -149,7 +149,11 @@ class Chart extends React.Component
 				break;
 		}
 	}	
-
+/*
+<div className='dataResults'>
+					{this.statisticsContainer}
+				</div>
+*/
     render() 
 	{		
         return (
@@ -160,10 +164,7 @@ class Chart extends React.Component
 						options = {this.options} 
 						onRef = {ref => this.chart = ref}
 					></CanvasJSChart>
-				</div>
-				<div className='dataResults'>
-					{this.statisticsContainer}
-				</div>
+				</div>				
 			</div>}
 		</>
 		);

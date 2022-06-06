@@ -14,10 +14,7 @@ import TopNavigator from './components/TopNavigator/TopNavigator';
 
 class App extends React.Component
 {
-  constructor()
-  {
-    super();
-  }
+  static serverIP = 'https://95.216.191.9:5000/';
 
   static showPopUpMessage(messages, titleText = '')
   {
@@ -35,14 +32,14 @@ class App extends React.Component
     if (Array.isArray(messages))
     {
       messages.forEach(message => {
-        var p = p = document.createElement('p');
+        var p = document.createElement('p');
         p.innerText += message;
         contentDiv.appendChild(p);
       });
     }
     else
     {
-      var p = p = document.createElement('p');
+      var p = document.createElement('p');
       p.innerText += messages;
       contentDiv.appendChild(p);
     }
