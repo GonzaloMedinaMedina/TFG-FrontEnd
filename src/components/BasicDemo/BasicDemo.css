@@ -2,7 +2,7 @@
 
 
 .active-page {
-    background-color:whitesmoke;
+    background-color: whitesmoke;
     flex-grow: 1;
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: saturate(200%) blur(30px);
@@ -13,6 +13,7 @@
     border-radius: 0.75rem;
     padding: 0 17px 34px 17px;
     margin: 50px 17px;
+    overflow-y: auto;
 }
 
 .resultsContainer .explanationContainer {

@@ -12,9 +12,7 @@ class BasicDemo extends React.Component {
         <textarea rows="5" className='text-input centerElement' id='textareaId' placeholder='Type text to evaluate'></textarea>
         <button className='proccessButton centerElement' onClick={() => { this.onClickProccessButton(this) }}>Proccess</button>
       </div>
-
   }
-
 
   async onClickProccessButton(me) {
 

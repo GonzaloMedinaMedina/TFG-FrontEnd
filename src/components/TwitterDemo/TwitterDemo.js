@@ -32,8 +32,8 @@ class TwitterDemo extends React.Component
         })
         .then(await async function (response)
         {
-           // if (response.ok)
-           // {
+            if (response.ok)
+            {
 
                 await response.json().then( await async function (json)
                 {
@@ -54,7 +54,7 @@ class TwitterDemo extends React.Component
                         });
                     });
                 });   
-           // } 
+            } 
         })
         .catch((e) =>{
             App.showPopUpMessage(e.message);   
@@ -146,25 +146,6 @@ class TwitterDemo extends React.Component
         App.hideLoader();
     }
     
-    getTabView(tweets)
-    {
-        var tweetContainer = document.createElement('div');
-
-        for(var i = 0; i < tweets.length; i++)
-        {   
-            var tweetDiv = document.createElement('div');
-            tweetDiv.className = 'tweetDiv';
-            tweetDiv.style.backgroundColor = this.getTweetColor(tweets[i].type);
-            var content = document.createElement('p');
-            content.innerText = tweets[i].text;
-            content.style.color = 'white';
-            tweetDiv.appendChild(content);
-            tweetContainer.appendChild(tweetDiv);
-        }
-
-        return tweetContainer;  
-    }
-
     getTweetColor(labelName)
     {
         switch(labelName)

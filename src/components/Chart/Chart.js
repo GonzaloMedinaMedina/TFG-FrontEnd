@@ -84,7 +84,6 @@ class Chart extends React.Component
 			]
 		}
 	}
-
 	
 	prepareXYChart(props)
 	{
@@ -149,11 +148,7 @@ class Chart extends React.Component
 				break;
 		}
 	}	
-/*
-<div className='dataResults'>
-					{this.statisticsContainer}
-				</div>
-*/
+
     render() 
 	{		
         return (

@@ -12,8 +12,7 @@ import searchCriteria from '../../images/searchCriteria.PNG';
 import twitterDemo from '../../images/twitterDemo.PNG';
 import text from '../../images/texto.jpg';
 import basicDemo from '../../images/basicDemo.png';
-
-import Stepper from '../../components/Stepper/Stepper'
+import Stepper from '../../components/Stepper/Stepper';
 
 const basic = 
 {
@@ -66,7 +65,6 @@ const twitter =
       }
   ]
 }
-// 
 
 const tripleFormat =
   [
@@ -262,31 +260,6 @@ class Demo extends React.Component {
     }
 
     this.statistics[maxIndex].value++;
-  }
-
-  async evaluateTweets(json) {
-
-    var tweets = json.data,
-      scores = [],
-      tweetContainer = document.getElementById('tweetsContainer'),
-      me = this;
-
-    for (var i = 0; i < tweets.length; i++) {
-      me.updateStatistics(json);
-      scores.push(json);
-
-      var tweetDiv = document.createElement('div');
-      tweetDiv.className = 'tweetDiv';
-
-      var content = document.createElement('p');
-      content.innerText = tweets[i].text;
-      content.style.color = 'white';
-
-      tweetDiv.appendChild(content);
-      tweetContainer.appendChild(tweetDiv);
-    }
-
-    return scores;
   }
 
   getModels() {
