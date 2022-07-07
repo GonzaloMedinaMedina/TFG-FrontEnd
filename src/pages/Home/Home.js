@@ -15,10 +15,10 @@ function Home() {
           <div>
             <div className='flex'>
               <div className='welcomeContainer margin'>
-                <p className='text-black centerElement padding-top-bot semiTitle'>If you just wanna feel the power of the NLP, you are in the right place!</p>
+                <p className='text-black centerElement padding-top-bot semiTitle'>Would you like to feel the power of the NLP, then you are in the right place!</p>
 
-                <p className='text-black centerElement'>See what the NLP can do, just try it</p>
-                <p className='text-black centerElement'>Go to one of our demos, analyze batch of tweets in real time</p>
+                <p className='text-black centerElement'>See what the NLP is capable of, just try it</p>
+                <p className='text-black centerElement'>Head to one of our demos, analyze batch of tweets in real time</p>
                 <p className='text-black centerElement'>Enjoy the experience!</p>
               </div>                
                 <div className='welcomeContainer margin'>
