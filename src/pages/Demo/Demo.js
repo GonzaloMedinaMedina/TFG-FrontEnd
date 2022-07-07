@@ -36,7 +36,7 @@ const basic =
 
 const twitter = 
 {
-  title: "This demo allow you to analyze analyze batch of tweets",
+  title: "This demo allow you to analyze batch of tweets",
   data:
   [
       {
@@ -156,8 +156,6 @@ class Demo extends React.Component {
     this.subMenu = undefined;
     this.chart = undefined;
     this.updateChartVisibility = this.updateChartVisibility.bind(this);
-    this.scoreAverage = [];
-    this.statistics = [];
   }
 
   static checkCrossModel() {
@@ -201,13 +199,11 @@ class Demo extends React.Component {
         height: document.getElementById('resultsContainer').getAttribute('height'),
         format: currentFormat,
         type: isTwitterDemo ? "line" : "column",
-        statistics: this.statistics,
         moreThanOneTweet: isTwitterDemo
       }
     }
 
     me.chart = me.createChart(state);
-    this.statistics = [];
     this.forceUpdate();
   }
 
@@ -235,31 +231,6 @@ class Demo extends React.Component {
     if (actualScores !== null) {
       actualScores.remove();
     }
-  }
-
-  updateStatistics(json) {
-    if (this.statistics.length === 0) {
-      var formats = (Demo.modelsFormat.find(element => element.id === document.getElementById('dropDownList').value)).format;
-
-      for (var i = 0; i < formats.length; i++) {
-        this.statistics.push(
-          {
-            id: formats[i],
-            value: 0
-          }
-        )
-      }
-    }
-
-    var maxIndex = 0;
-
-    for (i = 0; i < json[0].length; i++) {
-      if (json[0][i].score > json[0][maxIndex].score) {
-        maxIndex = i;
-      }
-    }
-
-    this.statistics[maxIndex].value++;
   }
 
   getModels() {
