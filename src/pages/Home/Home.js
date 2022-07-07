@@ -26,7 +26,7 @@ function Home() {
                   <p className='text-black centerElement'>Don't worry, we can help you, just navigate to:</p>
                   <p className='text-black centerElement'>Documentation to learn about finetuning a language model</p>
                   <p className='text-black centerElement'>Getting Data to discover how the Twitter API works</p>
-                  <p className='text-black centerElement'>Or just visit this repository to have a deep learning {<a href='https://github.com/cardiffnlp/xlm-t/blob/main/README.md'> XLM-T</a>}</p> 
+                  <p className='text-black centerElement'>Or just visit this repository {<a href='https://github.com/cardiffnlp/xlm-t/blob/main/README.md'> XLM-T</a>} to have a deeper learning</p> 
               </div>
             </div>
         </div>
